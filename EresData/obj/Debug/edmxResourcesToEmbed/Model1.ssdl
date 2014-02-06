@@ -1,0 +1,229 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EresData.Model.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="EresDataModelStoreContainer">
+    <EntitySet Name="Grades" EntityType="EresData.Model.Store.Grades" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="GradeValues" EntityType="EresData.Model.Store.GradeValues" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Groups" EntityType="EresData.Model.Store.Groups" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Realisations" EntityType="EresData.Model.Store.Realisations" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Registrations" EntityType="EresData.Model.Store.Registrations" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Semesters" EntityType="EresData.Model.Store.Semesters" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Students" EntityType="EresData.Model.Store.Students" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Subjects" EntityType="EresData.Model.Store.Subjects" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="sysdiagrams" EntityType="EresData.Model.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_Grades_Realisations" Association="EresData.Model.Store.FK_Grades_Realisations">
+      <End Role="Realisations" EntitySet="Realisations" />
+      <End Role="Grades" EntitySet="Grades" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GradeValues_Grades" Association="EresData.Model.Store.FK_GradeValues_Grades">
+      <End Role="Grades" EntitySet="Grades" />
+      <End Role="GradeValues" EntitySet="GradeValues" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GradeValues_Registrations" Association="EresData.Model.Store.FK_GradeValues_Registrations">
+      <End Role="Registrations" EntitySet="Registrations" />
+      <End Role="GradeValues" EntitySet="GradeValues" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Realisations_Semesters" Association="EresData.Model.Store.FK_Realisations_Semesters">
+      <End Role="Semesters" EntitySet="Semesters" />
+      <End Role="Realisations" EntitySet="Realisations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Realisations_Subjects" Association="EresData.Model.Store.FK_Realisations_Subjects">
+      <End Role="Subjects" EntitySet="Subjects" />
+      <End Role="Realisations" EntitySet="Realisations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Registrations_Realisations" Association="EresData.Model.Store.FK_Registrations_Realisations">
+      <End Role="Realisations" EntitySet="Realisations" />
+      <End Role="Registrations" EntitySet="Registrations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Registrations_Students" Association="EresData.Model.Store.FK_Registrations_Students">
+      <End Role="Students" EntitySet="Students" />
+      <End Role="Registrations" EntitySet="Registrations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Students_Groups" Association="EresData.Model.Store.FK_Students_Groups">
+      <End Role="Groups" EntitySet="Groups" />
+      <End Role="Students" EntitySet="Students" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Grades">
+    <Key>
+      <PropertyRef Name="GradeID" />
+    </Key>
+    <Property Name="GradeID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="RealisationID" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="MaxValue" Type="nvarchar" Nullable="false" MaxLength="64" />
+    <Property Name="TimeStamp" Type="timestamp" StoreGeneratedPattern="Computed" />
+  </EntityType>
+  <EntityType Name="GradeValues">
+    <Key>
+      <PropertyRef Name="GradeValueID" />
+    </Key>
+    <Property Name="GradeValueID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="GradeID" Type="int" Nullable="false" />
+    <Property Name="RegistrationID" Type="int" Nullable="false" />
+    <Property Name="Value" Type="nchar" Nullable="false" MaxLength="10" />
+    <Property Name="Date" Type="nchar" Nullable="false" MaxLength="10" />
+    <Property Name="TimeStamp" Type="timestamp" StoreGeneratedPattern="Computed" />
+  </EntityType>
+  <EntityType Name="Groups">
+    <Key>
+      <PropertyRef Name="GroupID" />
+    </Key>
+    <Property Name="GroupID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="TimeStamp" Type="timestamp" StoreGeneratedPattern="Computed" />
+  </EntityType>
+  <EntityType Name="Realisations">
+    <Key>
+      <PropertyRef Name="RealisationID" />
+    </Key>
+    <Property Name="RealisationID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="SubjectID" Type="int" Nullable="false" />
+    <Property Name="SemesterID" Type="int" Nullable="false" />
+    <Property Name="TimeStamp" Type="timestamp" Nullable="false" StoreGeneratedPattern="Computed" />
+  </EntityType>
+  <EntityType Name="Registrations">
+    <Key>
+      <PropertyRef Name="RegistrationID" />
+    </Key>
+    <Property Name="RegistrationID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="StudentID" Type="int" Nullable="false" />
+    <Property Name="RealisationID" Type="int" Nullable="false" />
+    <Property Name="Value" Type="nvarchar" MaxLength="5" />
+    <Property Name="TimeStamp" Type="timestamp" StoreGeneratedPattern="Computed" />
+  </EntityType>
+  <EntityType Name="Semesters">
+    <Key>
+      <PropertyRef Name="SemesterID" />
+    </Key>
+    <Property Name="SemesterID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="nchar" Nullable="false" MaxLength="10" />
+    <Property Name="TimeStamp" Type="timestamp" StoreGeneratedPattern="Computed" />
+  </EntityType>
+  <EntityType Name="Students">
+    <Key>
+      <PropertyRef Name="StudentID" />
+    </Key>
+    <Property Name="StudentID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="LastName" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="GroupID" Type="int" Nullable="false" />
+    <Property Name="IndexNo" Type="char" Nullable="false" MaxLength="10" />
+    <Property Name="TimeStamp" Type="timestamp" StoreGeneratedPattern="Computed" />
+  </EntityType>
+  <EntityType Name="Subjects">
+    <Key>
+      <PropertyRef Name="SubjectID" />
+    </Key>
+    <Property Name="SubjectID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="Conspect" Type="nvarchar" Nullable="false" MaxLength="255" />
+    <Property Name="url" Type="nvarchar" MaxLength="50" />
+    <Property Name="TimeStamp" Type="timestamp" StoreGeneratedPattern="Computed" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <Association Name="FK_Grades_Realisations">
+    <End Role="Realisations" Type="EresData.Model.Store.Realisations" Multiplicity="1" />
+    <End Role="Grades" Type="EresData.Model.Store.Grades" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Realisations">
+        <PropertyRef Name="RealisationID" />
+      </Principal>
+      <Dependent Role="Grades">
+        <PropertyRef Name="RealisationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GradeValues_Grades">
+    <End Role="Grades" Type="EresData.Model.Store.Grades" Multiplicity="1" />
+    <End Role="GradeValues" Type="EresData.Model.Store.GradeValues" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Grades">
+        <PropertyRef Name="GradeID" />
+      </Principal>
+      <Dependent Role="GradeValues">
+        <PropertyRef Name="GradeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GradeValues_Registrations">
+    <End Role="Registrations" Type="EresData.Model.Store.Registrations" Multiplicity="1" />
+    <End Role="GradeValues" Type="EresData.Model.Store.GradeValues" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Registrations">
+        <PropertyRef Name="RegistrationID" />
+      </Principal>
+      <Dependent Role="GradeValues">
+        <PropertyRef Name="RegistrationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Realisations_Semesters">
+    <End Role="Semesters" Type="EresData.Model.Store.Semesters" Multiplicity="1" />
+    <End Role="Realisations" Type="EresData.Model.Store.Realisations" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Semesters">
+        <PropertyRef Name="SemesterID" />
+      </Principal>
+      <Dependent Role="Realisations">
+        <PropertyRef Name="SemesterID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Realisations_Subjects">
+    <End Role="Subjects" Type="EresData.Model.Store.Subjects" Multiplicity="1" />
+    <End Role="Realisations" Type="EresData.Model.Store.Realisations" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Subjects">
+        <PropertyRef Name="SubjectID" />
+      </Principal>
+      <Dependent Role="Realisations">
+        <PropertyRef Name="SubjectID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Registrations_Realisations">
+    <End Role="Realisations" Type="EresData.Model.Store.Realisations" Multiplicity="1" />
+    <End Role="Registrations" Type="EresData.Model.Store.Registrations" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Realisations">
+        <PropertyRef Name="RealisationID" />
+      </Principal>
+      <Dependent Role="Registrations">
+        <PropertyRef Name="RealisationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Registrations_Students">
+    <End Role="Students" Type="EresData.Model.Store.Students" Multiplicity="1" />
+    <End Role="Registrations" Type="EresData.Model.Store.Registrations" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Students">
+        <PropertyRef Name="StudentID" />
+      </Principal>
+      <Dependent Role="Registrations">
+        <PropertyRef Name="StudentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Students_Groups">
+    <End Role="Groups" Type="EresData.Model.Store.Groups" Multiplicity="1" />
+    <End Role="Students" Type="EresData.Model.Store.Students" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Groups">
+        <PropertyRef Name="GroupID" />
+      </Principal>
+      <Dependent Role="Students">
+        <PropertyRef Name="GroupID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

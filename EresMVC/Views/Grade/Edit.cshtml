@@ -1,0 +1,53 @@
+﻿@model EresMVC.Models.Grade.CreateModel
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Grade</legend>
+
+        <div class="form-group">
+            <label>Realizacja</label>
+            @Html.DropDownListFor(model => model.NewGrade.RealisationID, Model.Realizations, new { @class = "form-control", })
+            @Html.ValidationMessageFor(model => model.NewGrade.RealisationID)
+        </div>
+
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.NewGrade.Name)
+        </div>
+
+        <div class="editor-field">
+            @Html.EditorFor(model => model.NewGrade.Name)
+            @Html.ValidationMessageFor(model => model.NewGrade.Name)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.NewGrade.MaxValue)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.NewGrade.MaxValue)
+            @Html.ValidationMessageFor(model => model.NewGrade.MaxValue)
+        </div>
+
+        <p>
+            <input type="submit" value="Edit" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

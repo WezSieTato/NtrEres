@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e58113d6fe5a46d2a2817b17c6e8b700" Name="Diagram1">
+        <EntityTypeShape EntityType="EresData.Model.Grade" Width="1.5" PointX="5.25" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EresData.Model.GradeValue" Width="1.5" PointX="7.5" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EresData.Model.Group" Width="1.5" PointX="0.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EresData.Model.Realisation" Width="1.5" PointX="3" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EresData.Model.Registration" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EresData.Model.Semester" Width="1.5" PointX="0.75" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="EresData.Model.Student" Width="1.5" PointX="3" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="EresData.Model.Subject" Width="1.5" PointX="0.75" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="EresData.Model.sysdiagram" Width="1.5" PointX="5.75" PointY="8.75" IsExpanded="true" />
+        <AssociationConnector Association="EresData.Model.FK_Grades_Realisations" ManuallyRouted="false" />
+        <AssociationConnector Association="EresData.Model.FK_GradeValues_Grades" ManuallyRouted="false" />
+        <AssociationConnector Association="EresData.Model.FK_GradeValues_Registrations" ManuallyRouted="false" />
+        <AssociationConnector Association="EresData.Model.FK_Students_Groups" ManuallyRouted="false" />
+        <AssociationConnector Association="EresData.Model.FK_Realisations_Semesters" ManuallyRouted="false" />
+        <AssociationConnector Association="EresData.Model.FK_Realisations_Subjects" ManuallyRouted="false" />
+        <AssociationConnector Association="EresData.Model.FK_Registrations_Realisations" ManuallyRouted="false" />
+        <AssociationConnector Association="EresData.Model.FK_Registrations_Students" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

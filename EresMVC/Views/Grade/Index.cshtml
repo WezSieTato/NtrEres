@@ -1,0 +1,52 @@
+﻿@model IEnumerable<EresData.Grade>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Typy ocen</h2>
+
+<p>
+    @Html.ActionLink("Nowy", "Create")
+</p>
+<table>
+    <tr>
+        <th>Realizacja
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MaxValue)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @(item.Realisation.Semester.Name + " - " + item.Realisation.Subject.Name)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.MaxValue)
+            </td>
+
+            <td>
+                @Html.ActionLink("Edytuj", "Edit", new { id = item.GradeID }) |
+            @Html.ActionLink("Usun", "Delete", new { id = item.GradeID })
+            </td>
+
+        </tr>
+    }
+
+</table>
+
+ @Html.ActionLink("Powrot","Index", "Home") <br />
+
+

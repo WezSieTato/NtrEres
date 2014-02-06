@@ -1,0 +1,39 @@
+﻿@model EresData.Grade
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>Grade</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.RealisationID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.RealisationID)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Name)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.MaxValue)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.MaxValue)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}
